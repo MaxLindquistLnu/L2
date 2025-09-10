@@ -1,3 +1,5 @@
+import { getCharInfo } from "./CharHelper.js";
+
 export class CaesarCipher {
   shift: number;
   alphabet: string;
@@ -10,9 +12,7 @@ export class CaesarCipher {
     return str
       .split("")
       .map((char) => {
-        const isUpperCase = char === char.toUpperCase();
-        const lowerChar = char.toLowerCase();
-        const index = this.alphabet.indexOf(lowerChar);
+        const { isUpperCase, index } = getCharInfo(char, this.alphabet);
         if (index === -1) return char; // Non-alphabetic characters are not changed
 
         const shiftedIndex = (index + this.shift) % this.alphabet.length;
@@ -26,9 +26,7 @@ export class CaesarCipher {
     return str
       .split("")
       .map((char) => {
-        const isUpperCase = char === char.toUpperCase();
-        const lowerChar = char.toLowerCase();
-        const index = this.alphabet.indexOf(lowerChar);
+        const { isUpperCase, index } = getCharInfo(char, this.alphabet);
         if (index === -1) return char;
 
         let newIndex = (index - this.shift) % this.alphabet.length;

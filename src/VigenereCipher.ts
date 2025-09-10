@@ -1,3 +1,5 @@
+import { getCharInfo } from "./CharHelper.js";
+
 export class VigenereCipher {
   keyword: string;
   alphabet: string;
@@ -46,9 +48,7 @@ export class VigenereCipher {
   }
 
   shiftCharForward(char: string, shift: number): string {
-    const isUpperCase = char === char.toUpperCase();
-    const lowerChar = char.toLowerCase();
-    const index = this.alphabet.indexOf(lowerChar);
+    const { isUpperCase, index } = getCharInfo(char, this.alphabet);
     if (index === -1) return char;
 
     const shiftedIndex = (index + shift) % this.alphabet.length;
@@ -57,9 +57,7 @@ export class VigenereCipher {
   }
 
   shiftCharBackward(char: string, shift: number): string {
-    const isUpperCase = char === char.toUpperCase();
-    const lowerChar = char.toLowerCase();
-    const index = this.alphabet.indexOf(lowerChar);
+    const { isUpperCase, index } = getCharInfo(char, this.alphabet);
     if (index === -1) return char;
 
     let newIndex = (index - shift) % this.alphabet.length;
