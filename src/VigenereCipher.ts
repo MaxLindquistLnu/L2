@@ -1,9 +1,17 @@
 import { getCharInfo } from "./CharHelper.js";
 
+/**
+ * VigenereCipher class provides methods to encrypt and decrypt text using the Vigenère cipher technique.
+ * It supports both uppercase and lowercase letters, and leaves non-alphabetic characters unchanged.
+ */
 export class VigenereCipher {
-  keyword: string;
-  alphabet: string;
+  keyword: string; // The keyword used for encryption/decryption
+  alphabet: string; // The alphabet used for shifting
 
+  /**
+   * Creates a new VigenereCipher instance with the given keyword.
+   * @param keyword The keyword to use for the cipher
+   */
   constructor(keyword: string) {
     this.keyword = keyword.toLowerCase();
     this.alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -15,10 +23,11 @@ export class VigenereCipher {
     return str
       .split("")
       .map((char) => {
+        // Determine the shift for this character from the normalized key
         const shift = this.alphabet.indexOf(
           (normalizedKey[keyIndex] ?? "").toLowerCase()
         );
-        if (this.isLetter(char.toLowerCase())) keyIndex++;
+        if (this.isLetter(char.toLowerCase())) keyIndex++; // Only increment keyIndex for letters
         return this.shiftCharForward(char, shift);
       })
       .join("");
@@ -30,10 +39,11 @@ export class VigenereCipher {
     return str
       .split("")
       .map((char) => {
+        // Determine the shift for this character from the normalized key
         const shift = this.alphabet.indexOf(
           (normalizedKey[keyIndex] ?? "").toLowerCase()
         );
-        if (this.isLetter(char.toLowerCase())) keyIndex++;
+        if (this.isLetter(char.toLowerCase())) keyIndex++; // Only increment keyIndex for letters
         return this.shiftCharBackward(char, shift);
       })
       .join("");
