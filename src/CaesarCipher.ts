@@ -17,14 +17,9 @@ export class CaesarCipher {
     this.alphabet = "abcdefghijklmnopqrstuvwxyz";
   }
 
-  /**
-   * Encrypts a string using the Caesar cipher.
-   * @param str The input string to encrypt
-   * @returns The encrypted string
-   */
   encrypt(str: string): string {
     return str
-      .split("") // Split the string into characters
+      .split("")
       .map((char) => {
         // Get character info (case and index in alphabet)
         const { isUpperCase, index } = getCharInfo(char, this.alphabet);
@@ -36,17 +31,12 @@ export class CaesarCipher {
         // Restore original case
         return isUpperCase ? shiftedChar.toUpperCase() : shiftedChar;
       })
-      .join(""); // Join the characters back into a string
+      .join("");
   }
 
-  /**
-   * Decrypts a string that was encrypted with the Caesar cipher.
-   * @param str The encrypted string to decrypt
-   * @returns The decrypted (original) string
-   */
   decrypt(str: string): string {
     return str
-      .split("") // Split the string into characters
+      .split("")
       .map((char) => {
         // Get character info (case and index in alphabet)
         const { isUpperCase, index } = getCharInfo(char, this.alphabet);
@@ -59,6 +49,6 @@ export class CaesarCipher {
         // Restore original case
         return isUpperCase ? newChar.toUpperCase() : newChar;
       })
-      .join(""); // Join the characters back into a string
+      .join("");
   }
 }
