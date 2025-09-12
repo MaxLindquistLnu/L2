@@ -2,8 +2,10 @@ import { CaesarCipher } from "../CaesarCipher.js";
 import { VigenereCipher } from "../VigenereCipher.js";
 
 // Vigenere Cipher Example
-const vigenereCipher = new VigenereCipher("AYUSH");
-const vigenereEncrypted = vigenereCipher.encrypt("aslsaknvneqo");
+const vigenereCipher = new VigenereCipher("AYUS");
+const vigenereEncrypted = vigenereCipher.encrypt(
+  "aslsaknvneqo 123 12 12 12 g h j  GEEKSFORGEEKS!"
+);
 const vigenereDecrypted = vigenereCipher.decrypt(vigenereEncrypted);
 console.log(vigenereEncrypted); // Outputs: "Lxfopv ef rnhr!"
 console.log(vigenereDecrypted); // Outputs: "GEEKSFORGEEKS"

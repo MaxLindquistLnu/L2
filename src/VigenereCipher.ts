@@ -15,15 +15,11 @@ export class VigenereCipher {
     return str
       .split("")
       .map((char) => {
-        if (this.isLetter(char.toLowerCase())) {
-          const shift = this.alphabet.indexOf(
-            (normalizedKey[keyIndex] ?? "").toLowerCase()
-          );
-          keyIndex++;
-          return this.shiftCharForward(char, shift);
-        } else {
-          return char;
-        }
+        const shift = this.alphabet.indexOf(
+          (normalizedKey[keyIndex] ?? "").toLowerCase()
+        );
+        if (this.isLetter(char.toLowerCase())) keyIndex++;
+        return this.shiftCharForward(char, shift);
       })
       .join("");
   }
@@ -34,15 +30,11 @@ export class VigenereCipher {
     return str
       .split("")
       .map((char) => {
-        if (this.isLetter(char.toLowerCase())) {
-          const shift = this.alphabet.indexOf(
-            (normalizedKey[keyIndex] ?? "").toLowerCase()
-          );
-          keyIndex++;
-          return this.shiftCharBackward(char, shift);
-        } else {
-          return char;
-        }
+        const shift = this.alphabet.indexOf(
+          (normalizedKey[keyIndex] ?? "").toLowerCase()
+        );
+        if (this.isLetter(char.toLowerCase())) keyIndex++;
+        return this.shiftCharBackward(char, shift);
       })
       .join("");
   }
