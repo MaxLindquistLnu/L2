@@ -1,17 +1,9 @@
 import { getCharInfo } from "./CharHelper.js";
 
-/**
- * CaesarCipher class provides methods to encrypt and decrypt text using the Caesar cipher technique.
- * It supports both uppercase and lowercase letters, and leaves non-alphabetic characters unchanged.
- */
 export class CaesarCipher {
-  shift: number; // The number of positions to shift each letter
-  alphabet: string; // The alphabet used for shifting
+  shift: number;
+  alphabet: string;
 
-  /**
-   * Creates a new CaesarCipher instance with the given shift value.
-   * @param shift The number of positions to shift each letter
-   */
   constructor(shift: number) {
     this.shift = shift;
     this.alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -23,7 +15,7 @@ export class CaesarCipher {
       .map((char) => {
         // Get character info (case and index in alphabet)
         const { isUpperCase, index } = getCharInfo(char, this.alphabet);
-        if (index === -1) return char; // Non-alphabetic characters are not changed
+        if (index === -1) return char;
 
         // Calculate the shifted index, wrapping around the alphabet
         const shiftedIndex = (index + this.shift) % this.alphabet.length;
@@ -40,7 +32,7 @@ export class CaesarCipher {
       .map((char) => {
         // Get character info (case and index in alphabet)
         const { isUpperCase, index } = getCharInfo(char, this.alphabet);
-        if (index === -1) return char; // Non-alphabetic characters are not changed
+        if (index === -1) return char;
 
         // Calculate the shifted index for decryption, wrapping around the alphabet
         let newIndex = (index - this.shift) % this.alphabet.length;

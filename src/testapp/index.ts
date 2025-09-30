@@ -1,17 +1,11 @@
-import { CaesarCipher } from "../CaesarCipher.js";
-import { VigenereCipher } from "../VigenereCipher.js";
+import { Cipher } from "../Cipher.js";
 
-// Vigenere Cipher Example
-const vigenereCipher = new VigenereCipher("AYUS");
-const vigenereEncrypted = vigenereCipher.encrypt(
-  "aslsaknvneqo 123 12 12 12 g h j  GEEKSFORGEEKS!"
-);
-const vigenereDecrypted = vigenereCipher.decrypt(vigenereEncrypted);
-console.log(vigenereEncrypted); // Outputs: "Lxfopv ef rnhr!"
-console.log(vigenereDecrypted); // Outputs: "GEEKSFORGEEKS"
+const cipher = new Cipher();
 
-const cipher = new CaesarCipher(120);
-const encrypted = cipher.encrypt("Hellh, 224ld!");
-const decrypted = cipher.decrypt(encrypted);
-console.log(encrypted); // Outputs: "Rovvy, 224vf!"
-console.log(decrypted); // Outputs: "Hellh, 224ld!"
+// Example usage:
+console.log(cipher.encryptCaesar(3, "Hello, World!")); // "Khoor, Zruog!"
+console.log(cipher.decryptCaesar(3, "Khoor, Zruog!")); // "Hello, World!"
+console.log(cipher.encryptVigenere("key", "Hello, World!")); // "Rijvs, Uyvjn!"
+console.log(cipher.decryptVigenere("key", "Rijvs, Uyvjn!")); // "Hello, World!"
+console.log(cipher.encryptAtbash("He  lO")); // "SvoL"
+console.log(cipher.decryptAtbash("Sv  123ool")); // "Hello"
