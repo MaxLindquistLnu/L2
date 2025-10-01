@@ -19,14 +19,14 @@
 
 | #   | Keyword   | Input            | Expected Output | Notes                                      |
 | --- | --------- | ---------------- | --------------- | ------------------------------------------ |
-| 1   | `key`     | `attackatdawn`   | `kxriegkxbpni`  | Basic lowercase encryption                 |
-| 2   | `key`     | `kxriegkxbpni`   | `attackatdawn`  | Basic lowercase decryption                 |
-| 3   | `abc`     | `abc`            | `abc`           | Keyword `abc` acts as no shift on letters  |
-| 4   | `abc`     | `xyz`            | `xza`           | Wrap-around encryption                     |
+| 1   | `key`     | `attackatdawn`   | `kxrkgikxbkal`  | Basic lowercase encryption                 |
+| 2   | `key`     | `kxrkgikxbkal`   | `attackatdawn`  | Basic lowercase decryption (matches #1)    |
+| 3   | `abc`     | `abc`            | `ace`           | Keyword `abc` shifts = 0,1,2 -> `ace`      |
+| 4   | `abc`     | `xyz`            | `xzb`           | Wrap-around encryption                     |
 | 5   | `abc`     | `XyZ`            | `XzB`           | Uppercase preserved                        |
 | 6   | `key`     | `Hello, World!`  | `Rijvs, Uyvjn!` | Non-alphabetic characters unchanged        |
 | 7   | `a`       | `Test`           | `Test`          | Keyword `a` results in no change           |
-| 8   | `longkey` | `short`          | `dvbjx`         | Key longer than input, only prefix is used |
+| 8   | `longkey` | `short`          | `dvbxd`         | Key longer than input, only prefix is used |
 | 9   | `key`     | `""` (empty str) | `""`            | Empty input remains empty                  |
 
 ## Manual Test Cases - AtbashCipher
@@ -41,5 +41,5 @@
 | 6   | `World`          | `Dliow`         | Mixed case transformation      |
 | 7   | `Hello, World!`  | `Svool, Dliow!` | Non-alphabetic chars unchanged |
 | 8   | `aZ`             | `zA`            | First and last letters         |
-| 9   | `nopqrs`         | `mlkjhi`        | Middle alphabet letters        |
+| 9   | `nopqrs`         | `mlkjih`        | Middle alphabet letters        |
 | 10  | `""` (empty str) | `""`            | Empty input                    |
