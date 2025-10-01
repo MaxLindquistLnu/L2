@@ -28,4 +28,18 @@
 | 7   | `a`       | `Test`           | `Test`          | Keyword `a` results in no change           |
 | 8   | `longkey` | `short`          | `dvbjx`         | Key longer than input, only prefix is used |
 | 9   | `key`     | `""` (empty str) | `""`            | Empty input remains empty                  |
-|     |
+
+## Manual Test Cases - AtbashCipher
+
+| #   | Input            | Expected Output | Notes                          |
+| --- | ---------------- | --------------- | ------------------------------ |
+| 1   | `abc`            | `zyx`           | Basic lowercase encryption     |
+| 2   | `zyx`            | `abc`           | Basic lowercase decryption     |
+| 3   | `xyz`            | `cba`           | End of alphabet encryption     |
+| 4   | `cba`            | `xyz`           | End of alphabet decryption     |
+| 5   | `Hello`          | `Svool`         | Uppercase letters preserved    |
+| 6   | `World`          | `Dliow`         | Mixed case transformation      |
+| 7   | `Hello, World!`  | `Svool, Dliow!` | Non-alphabetic chars unchanged |
+| 8   | `aZ`             | `zA`            | First and last letters         |
+| 9   | `nopqrs`         | `mlkjhi`        | Middle alphabet letters        |
+| 10  | `""` (empty str) | `""`            | Empty input                    |
